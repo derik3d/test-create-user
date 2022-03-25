@@ -4,12 +4,21 @@ import com.test.myusersapp.dto.user_creation_request.CreatePhoneRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 @Data
 @NoArgsConstructor
 public class Phone {
-    int number;
-    int cityCode;
-    int countryCode;
+
+    @Id
+    Long id;
+
+    Integer number;
+    Integer cityCode;
+    Integer countryCode;
 
     public Phone(CreatePhoneRequest createPhoneRequest){
         this.setNumber(createPhoneRequest.getNumber());

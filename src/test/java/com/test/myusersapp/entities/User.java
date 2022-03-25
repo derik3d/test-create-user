@@ -4,14 +4,18 @@ import com.test.myusersapp.dto.user_creation_request.CreateUserRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
 @Data
 @NoArgsConstructor
 public class User {
 
+    @Id
     String userUUId;
 
     String name;
