@@ -25,7 +25,7 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
 ├──┬───────────┘
 │  │
 │  │   ┌──────────────┐
-│  └─► │GET/welcome   │
+│  └─► │GET/welcome   │  (Ignore this)
 │      └──────────────┘
 │
 │      ┌──────────────┐
@@ -34,7 +34,7 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
        
 ```  
        
-### Data flow through app
+### Data flow through app (POST/user)
 
 ```text    
    
