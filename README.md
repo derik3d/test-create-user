@@ -38,7 +38,7 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
 
 ```text    
    
-              (Data validation error)    ┌────────────┐
+         (Data validation error)    ┌────────────┐
  ◄───────────────────────────────── │ErrorFormat │
                                     └────────────┘
                                            ▲
