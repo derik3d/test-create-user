@@ -20,26 +20,19 @@ public class User {
     @Id
     String userUUId;
 
-    @Column
     String name;
-    @Column
+    @Column(unique = true)
     String email;
-    @Column
     String password;
 
     @OneToMany(mappedBy = "user")
     List<Phone> phones;
 
-    @Column
     LocalDateTime created;
-    @Column
     LocalDateTime modified;
-    @Column
     LocalDateTime lastLogIn;
 
-    @Column
     String token;
-    @Column
     Boolean isActive;
 
     public User(CreateUserRequest createUserRequest) {

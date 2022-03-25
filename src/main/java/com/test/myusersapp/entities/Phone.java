@@ -15,13 +15,10 @@ public class Phone {
     @GeneratedValue
     Long id;
 
-    @Column
     Integer number;
 
-    @Column
     Integer cityCode;
 
-    @Column
     Integer countryCode;
 
     @ManyToOne
