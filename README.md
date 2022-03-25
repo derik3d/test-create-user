@@ -47,13 +47,13 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
                                     │UserController│
                                     └──────────┬───┘
                                              ▲ │
-                                             │ ▼
+                                             │ ▼          Transform
 (incoming   ┌─────────────────┐        ┌─────┴─┐          ┌─────┐        ┌───────────────┐
  request)   │CreateUserRequest│ │      │@Valid │      ┌►  │User ├─┐  ┌───┤UserRepository │
             └─────────────────┘ │      └───────┘      │   └─────┘ │  │   └───────────────┘
  ─────►                         └──►   Validate       │           │  │
             ┌──────────────────┐    ─────────────────►    ┌─────┐ │  │   ┌───────────────────┐
-            │CreatePhoneRequest│ ┌─►   Transform      │   │Phone├─►  │ ┌─┤PhoneRepositoryUser│
+            │CreatePhoneRequest│ ┌─►                  │   │Phone├─►  │ ┌─┤PhoneRepositoryUser│
             └──────────────────┘ │                    └─► └─────┘ │  │ │ └───────────────────┘
                                                                   │  │ │
                                                                   │  │ │
