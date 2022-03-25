@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Phone {
     int number;
+    //TODO must be all lowecase on json
     int cityCode;
+    //TODO must be all lowercase on json
     int countryCode;
 }
