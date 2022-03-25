@@ -11,16 +11,21 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 public class UserCreatedResponse {
-    String userId;
+    String id;
     LocalDateTime created;
     LocalDateTime modified;
     @JsonProperty(value = "last_login")
     LocalDateTime lastLogIn;
     String token;
     @JsonProperty(value = "isactive")
-    String isActive;
+    Boolean isActive;
 
     public UserCreatedResponse(User user){
-        //TODO load user data on response
+        this.setId(user.getUserUUId());
+        this.setCreated(user.getCreated());
+        this.setModified(user.getModified());
+        this.setLastLogIn(user.getLastLogIn());
+        this.setToken(user.getToken());
+        this.setIsActive(user.getIsActive());
     }
 }

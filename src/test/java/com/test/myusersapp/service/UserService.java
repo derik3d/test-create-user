@@ -37,7 +37,6 @@ public class UserService implements IUserService{
 
         user = userRepository.save(user);
 
-        UserCreatedResponse userCreaatedREsponse = new UserCreatedResponse(user);
-        return userCreaatedREsponse;
+        return new UserCreatedResponse(user);
     }
 }
