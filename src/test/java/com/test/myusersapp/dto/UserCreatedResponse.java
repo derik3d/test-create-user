@@ -1,5 +1,6 @@
 package com.test.myusersapp.dto;
 
+import com.test.myusersapp.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,8 @@ public class UserCreatedResponse {
     String token;
     //TODO name must be changed on JSON
     String isActive;
+
+    public UserCreatedResponse(User user){
+        //TODO load user data on response
+    }
 }
