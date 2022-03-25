@@ -32,44 +32,51 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
 └────► │POST/user     │
        └──────────────┘
        
-       
-       
-       
 ```  
        
 ### Data flow through app
 
 ```text    
-       
-          (Data validation error)    ┌────────────┐
-◄─────────────────────────────────── │ErrorFormat │
-                                     └────────────┘
-                                            ▲
-                                            │
-                                     ┌──────┴───────┐
-                                     │UserController│
-                                     └──────────┬───┘
-                                              ▲ │
-                                              │ ▼
- (incoming   ┌─────────────────┐        ┌─────┴─┐          ┌─────┐        ┌───────────────┐
-  request)   │CreateUserRequest│ │      │@Valid │      ┌►  │User ├─┐  ┌───┤UserRepository │
-             └─────────────────┘ │      └───────┘      │   └─────┘ │  │   └───────────────┘
-  ─────►                         └──►   Validate       │           │  │
-             ┌──────────────────┐    ─────────────────►    ┌─────┐ │  │   ┌───────────────────┐
-             │CreatePhoneRequest│ ┌─►   Transform      │   │Phone├─►  │ ┌─┤PhoneRepositoryUser│
-             └──────────────────┘ │                    └─► └─────┘ │  │ │ └───────────────────┘
-                                                                   │  │ │
-                                                                   │  │ │
-                                                                   ▼  ▼ ▼
-           (sucessfull req)         ┌───────────────────┐     ┌───────────┐
- ◄──────────────────────────────────┤UserCreatedResponse│◄────┤UserService│  Validate integrity
-                                    └───────────────────┘     └────┬──────┘
-                                                                   │         Transform to response
-                                                                   │
-                                                                   │
-           (after db error)         ┌────────────┐                 │
- ◄──────────────────────────────────┤ErrorFormat │  ◄──────────────┘
+   
+              (Data validation error)    ┌────────────┐
+ ◄───────────────────────────────── │ErrorFormat │
                                     └────────────┘
-       
+                                           ▲
+                                           │
+                                    ┌──────┴───────┐
+                                    │UserController│
+                                    └──────────┬───┘
+                                             ▲ │
+                                             │ ▼
+(incoming   ┌─────────────────┐        ┌─────┴─┐          ┌─────┐        ┌───────────────┐
+ request)   │CreateUserRequest│ │      │@Valid │      ┌►  │User ├─┐  ┌───┤UserRepository │
+            └─────────────────┘ │      └───────┘      │   └─────┘ │  │   └───────────────┘
+ ─────►                         └──►   Validate       │           │  │
+            ┌──────────────────┐    ─────────────────►    ┌─────┐ │  │   ┌───────────────────┐
+            │CreatePhoneRequest│ ┌─►   Transform      │   │Phone├─►  │ ┌─┤PhoneRepositoryUser│
+            └──────────────────┘ │                    └─► └─────┘ │  │ │ └───────────────────┘
+                                                                  │  │ │
+                                                                  │  │ │
+                                                                  ▼  ▼ ▼
+                                                             ┌───────────┐
+                                                             │UserService├────────┐
+                                                             └───────────┘        │
+                                                                                  │
+                                                                                  │
+   (sucessfull req)  ┌───────────────────┐                       (Fail)           │
+ ◄───────────────────┤UserCreatedResponse│◄─────────────┐ ┌─── ◄────────┐         │
+                     └───────────────────┘              │ │             │         │
+                                                        │ │             │         │
+                                                        │ │             │         │
+                                                        │ ▼             │         │
+                                             ┌──────────┴───┐                     ▼
+                                             │UserController│        Validate integrity
+                                             └──────────┬───┘
+                                                        │ ▲             │
+                                                        │ │             │
+                                                        │ │             │
+       (after db error)     ┌────────────┐              │ │      (Ok)   │
+ ◄──────────────────────────┤ErrorFormat │ ◄────────────┘ └─────────────┘
+                            └────────────┘
        
 ```
