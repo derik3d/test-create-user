@@ -24,18 +24,19 @@ public class UserService implements IUserService{
 
     public UserCreatedResponse saveNewUser(CreateUserRequest createUserRequest) {
 
+
+
+        User user = new User(createUserRequest);
+        user = userRepository.save(user);
+
         List<Phone> phones = new ArrayList<>();
 
         for (CreatePhoneRequest createPhoneRequest :
                 createUserRequest.getPhones()) {
-            Phone phone = new Phone(createPhoneRequest);
+            Phone phone = new Phone(user, createPhoneRequest);
             phone =phoneRepository.save(phone);
             phones.add(phone);
         }
-
-        User user = new User(createUserRequest, phones);
-
-        user = userRepository.save(user);
 
         return new UserCreatedResponse(user);
     }
