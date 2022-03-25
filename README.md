@@ -63,7 +63,7 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
                                                              └───────────┘        │
                                                                                   │
                                                                                   │
-   (sucessfull req)  ┌───────────────────┐                       (Fail)           │
+   (sucessfull req)  ┌───────────────────┐                       (Ok)           │
  ◄───────────────────┤UserCreatedResponse│◄─────────────┐ ┌─── ◄────────┐         │
                      └───────────────────┘              │ │             │         │
                                                         │ │             │         │
@@ -75,7 +75,7 @@ Db schema is located on target/sql as create.sql, to get it extracted run mvn wi
                                                         │ ▲             │
                                                         │ │             │
                                                         │ │             │
-       (after db error)     ┌────────────┐              │ │      (Ok)   │
+       (after db error)     ┌────────────┐              │ │    (Fail)   │
  ◄──────────────────────────┤ErrorFormat │ ◄────────────┘ └─────────────┘
                             └────────────┘
        
