@@ -1,8 +1,8 @@
 package com.test.myusersapp.service;
 
+import com.test.myusersapp.dto.user_creation_request.CreateUserRequest;
 import com.test.myusersapp.dto.UserCreatedResponse;
-import com.test.myusersapp.entities.User;
 
 public interface IUserService {
-    public UserCreatedResponse saveNewUser(User user);
+    public UserCreatedResponse saveNewUser(CreateUserRequest user);
 }

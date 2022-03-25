@@ -1,5 +1,6 @@
 package com.test.myusersapp.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.myusersapp.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,10 +14,10 @@ public class UserCreatedResponse {
     String userId;
     LocalDateTime created;
     LocalDateTime modified;
-    //TODO name must be changed on JSON
+    @JsonProperty(value = "last_login")
     LocalDateTime lastLogIn;
     String token;
-    //TODO name must be changed on JSON
+    @JsonProperty(value = "isactive")
     String isActive;
 
     public UserCreatedResponse(User user){
