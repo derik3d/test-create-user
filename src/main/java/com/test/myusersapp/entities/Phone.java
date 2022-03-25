@@ -4,7 +4,6 @@ import com.test.myusersapp.dto.user_creation_request.CreatePhoneRequest;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

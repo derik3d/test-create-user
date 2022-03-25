@@ -2,7 +2,6 @@ package com.test.myusersapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.test.myusersapp.entities.User;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
